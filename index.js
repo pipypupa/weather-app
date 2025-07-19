@@ -17,13 +17,12 @@ function makeList(object) {
   return html;
 }
 
-input.addEventListener("change", (e) => {
+input.addEventListener("input", (e) => {
   const city = e.target.value.trim();
-
   if (!city) return;
 
   fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&lang=ua&units=metric`
+    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&lang=ua&units=metric&_=${Date.now()}`
   )
     .then((res) => {
       if (!res.ok) throw new Error("Місто не знайдено");
